@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.decorators import login_required
 from . forms import RegistrationForm
 from .models import Account
 from django.contrib import messages, auth
@@ -32,8 +32,8 @@ def register(request):
 
 def login(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
+        email = request.POST.get('email')
+        password = request.POST.get('password')
 
         user = auth.authenticate(email=email, password=password)
 
@@ -47,5 +47,8 @@ def login(request):
     return render(request, 'accounts/login.html')
 
 
+@login_required(login_url='login')
 def logout(request):
-    pass
+    auth.logout(request)
+    messages.success(request, 'You are logged out.')
+    return redirect('login')
