@@ -42,7 +42,7 @@ def register(request):
 
             # messages.success(
             #     request, "Thank you for registration please activate you account!")
-            return redirect('/accounts/login/?command=verification&email='+email)
+            return redirect('/account/login/?command=verification&email='+email)
     else:
         form = RegistrationForm()
     context = {
@@ -134,3 +134,7 @@ def forgotPassword(request):
             return redirect('forgotPassword')
 
     return render(request, 'accounts/forgotPassword.html')
+
+
+def resetpassword_validate(request):
+    return HttpResponse('Ok')
