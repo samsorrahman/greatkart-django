@@ -141,3 +141,10 @@ MESSAGE_TAGS = {
     messages.ERROR: "Danger",
 
 }
+
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 587
+EMAIL_HOST_USER = 'samsorrahman20@gmail.com'
+EMAIL_HOST_PASSWORD = 'Smsafghan8845'
+EMAIL_USE_TLS = True
