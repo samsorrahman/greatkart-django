@@ -108,4 +108,9 @@ def dashboard(request):
 
 
 def forgotPassword(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        if Account.objects.filter(email=email).exists():
+            user = Account.objects.get(email__exact=email)
+
     return render(request, 'accounts/forgotPassword.html')
