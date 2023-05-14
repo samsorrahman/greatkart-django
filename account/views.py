@@ -105,3 +105,7 @@ def dashboard(request):
     #     'userprofile': userprofile,
     # }
     return render(request, 'accounts/dashboard.html')
+
+
+def forgotPassword(request):
+    return render(request, 'accounts/forgotPassword.html')
