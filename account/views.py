@@ -60,7 +60,8 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('home')
+            messages.success(request, 'You are now logged in.')
+            return redirect('dashboard')
         else:
             messages.error(request, 'Invalid Login Credentials')
             return redirect('login')
@@ -91,3 +92,16 @@ def activate(request, uidb64, token):
     else:
         messages.error(request, 'Invalid activation link')
         return redirect('register')
+
+
+@login_required(login_url='login')
+def dashboard(request):
+    # orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
+    # orders_count = orders.count()
+
+    # userprofile = UserProfile.objects.get(user_id=request.user.id)
+    # context = {
+    #     'orders_count': orders_count,
+    #     'userprofile': userprofile,
+    # }
+    return render(request, 'accounts/dashboard.html')
