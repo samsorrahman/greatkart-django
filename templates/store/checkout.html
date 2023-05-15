@@ -50,24 +50,24 @@
                     </div>
                   </div>
                   <div class="form-row">
-                    <div class="col form-group">
-                      <label for="">City</label>
-                      <input type="text" name="city" class="form-control" required>
-                    </div>
-                    <div class="col form-group">
-                      <label for="">State</label>
-                      <input type="text" name="state" class="form-control" required>
-                    </div>
-                    <div class="col form-group">
-                      <label for="">Country</label>
-                      <input type="text" name="country" class="form-control" required>
-                    </div>
+                        <div class="col form-group">
+                        <label for="">City</label>
+                        <input type="text" name="city" class="form-control" required>
+                        </div>
+                        <div class="col form-group">
+                        <label for="">State</label>
+                        <input type="text" name="state" class="form-control" required>
+                        </div>
+                        <div class="col form-group">
+                        <label for="">Country</label>
+                        <input type="text" name="country" class="form-control" required>
+                        </div>
                     </div>
                     <div class="form-row">
                       <label for="">Order Note</label>
                       <textarea name="order_note" rows="2" class="form-control"></textarea>
                     </div>
-            </form>
+       
         </div> <!-- card.// -->
         
             </aside> <!-- col.// -->
@@ -119,9 +119,9 @@
             
                     </tbody>
                     </table>
-               
-                    <a href="{% url 'checkout' %}" class="btn btn-primary btn-block"> Place Order </a>
+                    <button type="submit" class="btn btn-primary btn-block" name="submit">Place Order</button>
                     <a href="{% url 'store' %}" class="btn btn-light btn-block">Continue Shopping</a>
+                </form>
                 </div> <!-- card-body.// -->
                 </div> <!-- card.// -->
         
