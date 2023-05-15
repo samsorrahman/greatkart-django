@@ -18,9 +18,10 @@ def _cart_id(request):
 def add_cart(request, product_id):
     current_user = request.user
     product = Product.objects.get(id=product_id)  # getting product her
+    # If the user is authenticated
     if current_user.is_authenticated:
-        product_variation = []  # getting product variation here
-        if request.method == "POST":
+        product_variation = []
+        if request.method == 'POST':
             for item in request.POST:
                 key = item
                 value = request.POST[key]
@@ -36,20 +37,22 @@ def add_cart(request, product_id):
             product=product, user=current_user).exists()
         if is_cart_item_exists:
             cart_item = CartItem.objects.filter(
-                product=product,   user=current_user)  # getting cart item here
-
+                product=product, user=current_user)
             ex_var_list = []
             id = []
             for item in cart_item:
                 existing_variation = item.variations.all()
                 ex_var_list.append(list(existing_variation))
                 id.append(item.id)
+
             if product_variation in ex_var_list:
+                # increase the cart item quantity
                 index = ex_var_list.index(product_variation)
                 item_id = id[index]
                 item = CartItem.objects.get(product=product, id=item_id)
                 item.quantity += 1
                 item.save()
+
             else:
                 item = CartItem.objects.create(
                     product=product, quantity=1, user=current_user)
