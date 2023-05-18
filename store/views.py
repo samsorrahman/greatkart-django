@@ -67,3 +67,7 @@ def search(request):
         }
 
     return render(request, 'store/store.html', context)
+
+
+def submit_review(request):
+    return
