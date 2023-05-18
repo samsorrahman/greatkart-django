@@ -10,27 +10,81 @@
     <div class="container">
     
     <!-- ============================ COMPONENT 1 ================================= -->
-
+    <h4 class="text-center mb-20">Review Your Order and Make Payment</h4>
         <div class="row">
             <aside class="col-lg-8">
                 <div class="card">
                     <h5 class="card-header">Billing Address</h5>
                     <div class="card-body">
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text mb-0">{{order.full_name}}</p>
+						<p class="card-text mb-0">{{order.full_address}}</p>
+						<p class="card-text mb-0">{{order.city}}, {{order.state}}</p>
+						<p class="card-text mb-0">{{order.country}}</p>
+						<p class="card-text mb-0">{{order.email}}</p>
+						<p class="card-text mb-0">{{order.phone}}</p>
+                        {% if order.order_note %}
+						<b>Order Note: </b> {{order.order_note}}
+						{% endif %}
+
                     </div>
                   </div>
 
                   <div class="card">
                     <h5 class="card-header">Payment Method</h5>
                     <div class="card-body">
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <p class="card-text">Paypal</p>
                     </div>
                   </div>
 
                   <div class="card">
                     <h5 class="card-header">Review Products</h5>
                     <div class="card-body">
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <table class="table table-borderless table-shopping-cart">
+                            <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                            <th scope="col">Product</th>
+                            <th scope="col" width="120">Quantity</th>
+                            <th scope="col" width="120">Price</th>
+              
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for cart_item in cart_items  %}
+                            <tr>
+                            
+                                <td>
+                                    <figure class="itemside align-items-center">
+                                        <div class="aside"><img src="{{cart_item.product.images.url}}" class="img-sm"></div>
+                                        <figcaption class="info">
+                                            <a href="{{ cart_item.product.get_url }}" class="title text-dark">{{cart_item.product.product_name}}</a>
+                                            <p class="text-muted small">
+                                                {% if cart_item.variations.all %}
+                                                {% for item in cart_item.variations.all %}
+                                                    {{ item.variation_category | capfirst }} : {{ item.variation_value | capfirst }} <br>
+                                                {% endfor %}
+                                            {% endif %}
+                                            </p>
+                                        </figcaption>
+                                    </figure>
+                                </td>
+                                <td> 
+                                    <!-- col.// -->
+                                    <label for="">{{cart_item.quantity}}</label>
+                                </td>
+                                <td> 
+                                    <div class="price-wrap"> 
+                                        <var class="price">${{cart_item.sub_total}}</var> 
+                                        <small class="text-muted"> ${{cart_item.product.price}} each </small> 
+                                    </div> <!-- price-wrap .// -->
+                                </td>
+                            
+                            
+                            </tr>
+                    
+                            {% endfor %}
+                    
+                            </tbody>
+                            </table>
                     </div>
                   </div>
             </aside> <!-- col.// -->
