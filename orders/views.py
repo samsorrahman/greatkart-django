@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from carts.models import CartItem
 from .forms import OrderForm
 from . models import Order
+import datetime
 # Create your views here.
 
 
@@ -41,3 +42,9 @@ def place_order(request, total=0, quantity=0):
             data.tax = tax
             data.ip = request.META.get('REMOTE_ADDR')
             data.save()
+            # generate order number
+            yr = int(datetime.date.today().strftime('%Y'))
+            dt = int(datetime.date.today().strftime('%d'))
+            mt = int(datetime.date.today().strftime('%m'))
+            d = datetime.date(yr, mt, dt)
+            current_date = d.strftime("%Y%m%d")
