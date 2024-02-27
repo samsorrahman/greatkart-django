@@ -1,4 +1,30 @@
 # Welcome to GreatKart Django Web application.
+
+## Explanation
+- Django Custom User Model, Category & Media Files
+- Working with Products
+- Context Processors & Product Details
+- Carts Functionality
+- Add to Cart using Session Keys, Increment/decrement/remove Cart Items
+- Fixing Cart Bugs & Context Processor for Cart Item Counter
+- Paginator & Search
+- Product Variations & Variation Manager
+- Adding the Variation in Cart, Grouping Cart Item Variations
+- Registration, Login with Token Based Verification & Message Alerts
+- User Account Activation & Activation Link Expiry
+- Forgot Password with Secure Validation Links
+- Cart Checkout, automatically assign the Cart Items to Logged-in User
+- Orders & Order Number Generation
+- Payment Gateway Integration & Place Order
+- After Order Functionalities
+- Review and Rating System
+- Two Factor Checks for Submitting Reviews (Login check & Product purchase check)
+- Rating Average & Review Count Calculation
+- My Account Functionalities
+- Product Gallery with Unlimited Images
+- Django Security Measures
+
+
 ![1](https://github.com/samsorrahman/greatkart-django/assets/112087807/37459455-a09d-447d-8e06-f029fc286efb)
 
 
